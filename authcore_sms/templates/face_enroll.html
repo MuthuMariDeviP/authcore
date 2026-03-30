@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-box">
+    <h2>Face Enrollment</h2>
+
+    <form action="" method="get"
+          onsubmit="this.action = '/face/video/' + this.staff_id.value;">
+        <input type="text" name="staff_id" placeholder="Enter Staff ID" required>
+        <button type="submit">Start Camera Enrollment</button>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+
+.dashboard-container{
+width:96%;
+margin:auto;
+padding-top:20px;
+}
+
+.stats{
+display:flex;
+justify-content:space-between;
+gap:25px;
+margin-top:30px;
+margin-bottom:30px;
+}
+
+.stat-card{
+flex:1;
+padding:25px;
+border-radius:12px;
+color:white;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+transition:transform 0.2s;
+}
+
+.stat-card:hover{
+transform:translateY(-4px);
+}
+
+.stat-title{
+font-size:18px;
+margin-bottom:10px;
+font-weight:500;
+}
+
+.stat-value{
+font-size:32px;
+font-weight:bold;
+}
+
+.total-card{
+background:linear-gradient(135deg,#4e73df,#224abe);
+}
+
+.present-card{
+background:linear-gradient(135deg,#1cc88a,#13855c);
+}
+
+.absent-card{
+background:linear-gradient(135deg,#e74a3b,#b02a1f);
+}
+
+.staff-table{
+margin-top:40px;
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+width:100%;
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+font-size:16px;
+}
+
+th{
+background:#3c72c3;
+padding:16px;
+font-size:17px;
+text-align:center;
+}
+
+td{
+padding:15px;
+text-align:center;
+font-size:16px;
+color:#12103f;
+}
+
+th,td{
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f2f2f2;
+}
+
+
+.open-btn {
+    background: linear-gradient(135deg, #4e73df, #224abe);
+    color: white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 25px; /* makes it pill-shaped */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.open-btn:hover {
+    background: linear-gradient(135deg, #224abe, #1a2a8c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+</style>
+
+<div class="dashboard-container">
+
+<h2 style="margin-bottom:20px;">Organization Dashboard</h2>
+
+<div class="stats">
+
+<div class="stat-card total-card">
+<div class="stat-title">Total Staff</div>
+<div class="stat-value">{{ total_staff }}</div>
+</div>
+
+<div class="stat-card present-card">
+<div class="stat-title">Present Today</div>
+<div class="stat-value">{{ present_today }}</div>
+</div>
+
+<div class="stat-card absent-card">
+<div class="stat-title">Absent Today</div>
+<div class="stat-value">{{ absent_today }}</div>
+</div>
+
+</div>
+
+<div class="staff-table">
+
+<h3 style="color:#222; margin-bottom:15px;">Staff Directory</h3>
+
+<table>
+
+<tr>
+<th>Staff ID</th>
+<th>Name</th>
+<th>Department</th>
+<th>Profile</th>
+</tr>
+
+{% for s in staff %}
+
+<tr>
+<td>{{ s[0] }}</td>
+<td>{{ s[1] }}</td>
+<td>{{ s[2] }}</td>
+
+<td>
+  <a href="/staff/dashboard/{{ s[0] }}">
+    <button class="open-btn">Open Dashboard</button>
+  </a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

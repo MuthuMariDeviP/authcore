@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-box">
+
+<h2>Face Verification</h2>
+
+
+<p>Staff ID: {{ staff_id }}</p>
+
+<img src="{{ url_for('face_camera') }}" width="450">
+
+<p>Look at the camera for verification</p>
+
+<h2>{{ message }}</h2>
+
+<button onclick="window.location.href='/face_verify'">
+    Proceed to Face Verification
+</button>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AuthCore SMS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<style>
+    /* Main Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    padding: 12px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Optional: Active page highlight */
+.nav-links a.active {
+    background: rgba(255,255,255,0.35);
+    font-weight: 600;
+}
+
+/* Responsive Hamburger Menu */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #4e73df;
+        position: absolute;
+        top: 60px;
+        right: 25px;
+        border-radius: 10px;
+        padding: 15px;
+        gap: 10px;
+        width: 200px;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+</style>
+
+<!-- HEADER -->
+<!-- HEADER -->
+<div class="header">
+    <img src="{{ url_for('static', filename='images/college_logo.jpeg') }}" alt="College Logo">
+    <div>
+        <h1>DR.G.U. POPE COLLEGE OF ENGINEERING</h1>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <a href="/" class="logo">AuthCore</a>
+    
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    
+    <div class="nav-links" id="navLinks">
+        <a href="/" class="{% if request.path=='/' %}active{% endif %}">Home</a>
+        <a href="/staff/register" class="{% if request.path=='/staff/register' %}active{% endif %}">Staff Registration</a>
+        <a href="/face/enroll" class="{% if request.path=='/face/enroll' %}active{% endif %}">Face Enrollment</a>
+        <a href="/attendance/qr" class="{% if request.path=='/attendance/qr' %}active{% endif %}">QR/Face Attendance</a>
+        <a href="/dashboard" class="{% if request.path=='/dashboard' %}active{% endif %}">Dashboard</a>
+        <a href="/view_attendance" class="{% if request.path=='/view_attendance' %}active{% endif %}">View Attendance</a>
+        <a href="/leave_ai" class="{% if request.path=='/leave_ai' %}active{% endif %}">AI Assistant</a>
+        <a href="/reports" class="{% if request.path=='/reports' %}active{% endif %}">Reports</a>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer>
+    © DRGUPCE | AuthCore | CSE | Batch 2022- 2026 
+</footer>
+
+</body>
+
+<script>
+function toggleMenu(){
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('show');
+}
+</script>
+</html>

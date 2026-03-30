@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+
+.report-container{
+width:500px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.report-container h2{
+margin-bottom:20px;
+}
+
+.report-container input,
+.report-container select{
+width:90%;
+padding:10px;
+margin:8px 0;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.download-btn{
+background:#061c34;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.download-btn:hover{
+background:#0056b3;
+}
+
+</style>
+
+<div class="report-container">
+
+<h2>Attendance Reports</h2>
+
+<form action="/generate_report" method="POST">
+
+<select name="report_type" id="report_type" onchange="changeForm()" required>
+
+<option value="">Select Report Type</option>
+<option value="individual">Individual Report</option>
+<option value="department">Department Report</option>
+<option value="organization">Organization Report</option>
+
+</select>
+
+<!-- STAFF INPUT -->
+
+<div id="staff_box" style="display:none;">
+
+<input type="text" name="staff_id" placeholder="Enter Staff ID">
+
+</div>
+
+<!-- DEPARTMENT INPUT -->
+
+<div id="dept_box" style="display:none;">
+
+<input type="text" name="department" placeholder="Enter Department">
+
+</div>
+
+<br>
+
+<label>From Date</label>
+<input type="date" name="from_date" required>
+
+<label>To Date</label>
+<input type="date" name="to_date" required>
+
+<br>
+
+<button class="download-btn" type="submit">
+Download Report
+</button>
+
+</form>
+
+
+
+</div>
+
+<script>
+
+function changeForm(){
+
+let type=document.getElementById("report_type").value;
+
+document.getElementById("staff_box").style.display="none";
+document.getElementById("dept_box").style.display="none";
+
+if(type==="individual"){
+document.getElementById("staff_box").style.display="block";
+}
+
+if(type==="department"){
+document.getElementById("dept_box").style.display="block";
+}
+
+}
+
+</script>
+
+{% endblock %}

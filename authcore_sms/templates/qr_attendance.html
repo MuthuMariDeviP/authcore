@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="page-box">
+    <h2>QR Attendance</h2>
+
+    <a href="{{ url_for('scan_qr') }}" class="action-btn">
+        Start QR Scanner
+    </a>
+</div>
+
+<p id="status"></p>
+
+<script>
+setInterval(function(){
+    fetch('/check_qr')
+    .then(res => res.text())
+    .then(data => {
+        if(data === "OK"){
+            window.location.href = "/face_verify";
+        }
+    });
+}, 1500);
+</script>
+
+{% endblock %}

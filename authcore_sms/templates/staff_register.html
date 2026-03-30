@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<div class="page-box">
+    <h2>Staff Registration</h2>
+
+    <form method="post">
+        <input type="text" name="staff_id" placeholder="Staff ID" required>
+        <input type="text" name="name" placeholder="Staff Name" required>
+        <input type="text" name="department" placeholder="Department" required>
+        <input type="text" name="designation" placeholder="Designation" required>
+        <input type="text" name="mobile" placeholder="Mobile Number" required>
+
+        <button type="submit">Register Staff</button>
+    </form>
+</div>
+
+{% endblock %}

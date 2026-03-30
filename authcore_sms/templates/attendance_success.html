@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+.success-container {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin-top:80px;
+    padding:40px;
+    background: linear-gradient(135deg,#1cc88a,#13855c);
+    color:white;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+.success-container h1 {
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.success-container p {
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.success-container a {
+    text-decoration:none;
+    color:white;
+    background: #224abe;
+    padding:10px 25px;
+    border-radius:25px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.success-container a:hover {
+    background:#1a2a8c;
+}
+</style>
+
+<div class="success-container">
+    <h1>✔ Success!</h1>
+    <p>{{ message }}</p>
+    <a href="/view_attendance">Go to view attendance</a>
+</div>
+
+{% endblock %}

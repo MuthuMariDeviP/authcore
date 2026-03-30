@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.container{
+width:600px;
+margin:auto;
+margin-top:40px;
+background:white;
+padding:30px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+padding:10px 20px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+.response{
+margin-top:20px;
+padding:15px;
+background:#862dd9;
+border-left:5px solid #007bff;
+}
+
+</style>
+
+<div class="container">
+
+<h2>🤖 Leave AI Assistant</h2>
+
+<form action="/leave_ai" method="POST">
+
+<input type="text" name="staff_id" placeholder="Enter Staff ID" required>
+
+<select name="question" required>
+
+<option value="">Select your question</option>
+
+<option value="casual_leave">
+How many casual leaves are allowed per year?
+</option>
+
+<option value="leave_application">
+Can I apply for leave today?
+</option>
+
+<option value="leave_balance">
+How many leave days are remaining?
+</option>
+
+</select>
+
+<center>
+<button type="submit">Ask AI</button>
+</center>
+
+</form>
+
+{% if response %}
+
+<div class="response">
+
+<b>AI Response:</b><br><br>
+
+{{ response }}
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

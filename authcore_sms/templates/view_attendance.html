@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<style>
+
+.title{
+margin-bottom:20px;
+}
+
+.top-bar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+margin-bottom:20px;
+}
+
+.filter-box{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.search-box input{
+padding:6px 8px;
+width:200px;
+border:1px solid #ccc;
+border-radius:4px;
+font-size:13px;
+}
+
+.export-btn{
+padding:4px 8px;
+font-size:12px;
+background:#28a745;
+color:white;
+border:none;
+border-radius:3px;
+cursor:pointer;
+}
+
+.search-box input{
+padding:8px;
+width:250px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.attendance-table{
+width:100%;
+background:rgb(10, 11, 4);
+border-collapse:collapse;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.attendance-table th{
+background:#343a40;
+color:rgb(234, 231, 231);
+padding:12px;
+}
+
+.attendance-table td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+.present{
+color:green;
+font-weight:bold;
+}
+
+.absent{
+color:red;
+font-weight:bold;
+}
+
+
+
+</style>
+
+
+<div class="top-bar">
+
+<div class="filter-box">
+
+<form method="POST" action="/view_attendance">
+
+    <input type="date" name="date">
+
+    <select name="status">
+        <option value="">All</option>
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+    </select>
+
+    <button type="submit">Search</button>
+
+</form>
+
+</div>
+
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search Staff...">
+</div>
+
+<button class="export-btn" onclick="exportTable()">Export Excel</button>
+
+</div>
+
+
+<table class="attendance-table" id="attendanceTable">
+
+<tr>
+<th>Staff ID</th>
+<th>Name</th>
+<th>Department</th>
+<th>Date</th>
+<th>Time</th>
+<th>Mode</th>
+<th>Status</th>
+</tr>
+
+{% for row in records %}
+
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[3] }}</td>
+<td>{{ row[4] }}</td>
+<td>{{ row[5] }}</td>
+
+
+<td>
+{% if row[6] == "Present" %}
+<span class="present">{{ row[6] }}</span>
+{% else %}
+<span class="absent">{{ row[6] }}</span>
+{% endif %}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+
+<script>
+
+// Search Function
+
+document.getElementById("searchInput").addEventListener("keyup", function() {
+
+var filter = this.value.toLowerCase();
+var rows = document.querySelectorAll("#attendanceTable tr");
+
+rows.forEach((row, index) => {
+
+if(index === 0) return;
+
+var text = row.innerText.toLowerCase();
+
+row.style.display = text.includes(filter) ? "" : "none";
+
+});
+
+});
+
+
+// Export to Excel
+
+function exportTable(){
+
+let table = document.getElementById("attendanceTable").outerHTML;
+
+let dataType = 'application/vnd.ms-excel';
+
+let link = document.createElement("a");
+
+link.href = 'data:' + dataType + ', ' + encodeURIComponent(table);
+
+link.download = "attendance.xls";
+
+link.click();
+
+}
+
+</script>
+
+{% endblock %}

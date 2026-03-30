@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+main {
+    background-color: #081b37;
+    min-height: 60vh;
+    padding: 40px;
+    color: white;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #0a1f44;
+    color: white;
+}
+
+.header img {
+    height: 60px;
+    margin-right: 15px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.header p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #1c2f5c;
+    padding: 10px 25px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 18px;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Main content */
+main {
+    padding: 30px;
+}
+
+/* Centered box */
+.page-box {
+    max-width: 500px;
+    margin: 60px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Forms */
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    padding: 10px 22px;
+    background-color: #0a1f44;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #133a7c;
+}
+
+/* Buttons */
+.btn-small {
+    padding: 8px 20px;
+    border-radius: 6px;
+    background-color: #0a1f44;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-small:hover {
+    background-color: #133a7c;
+}
+
+.flash {
+    padding: 12px;
+    margin: 15px auto;
+    width: 60%;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.flash.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.flash.error {
+    background-color: #dc3545;
+    color: white;
+}
+/* Footer */
+footer {
+    text-align: center;
+    padding: 12px;
+    background-color: #0a1f44;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.action-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #0a1f44;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background-color: #133a7c;
+}
+
+/* Face Enrollment Camera */
+
+.face-container {
+    text-align: center;
+    padding: 40px;
+    color: white;
+}
+
+/* Dashboard Layout */
+
+.dashboard-container {
+    text-align: center;
+    padding: 40px;
+    color: white;
+}
+
+.dashboard-title {
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.dashboard-actions {
+    margin-bottom: 40px;
+}
+
+.dash-btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background-color: #1f2e46;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.dash-btn:hover {
+    background-color: #00c3ff;
+    color: black;
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #1f2e46;
+    padding: 20px;
+    width: 200px;
+    border-radius: 8px;
+}
+
